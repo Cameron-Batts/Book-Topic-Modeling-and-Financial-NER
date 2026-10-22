@@ -3,6 +3,21 @@
 **Author:** Cameron Batts  
 **Tools:** Python · Gensim · NLTK · spaCy · pandas · NumPy
 
+## Validation update - October 22, 2026
+
+The full workflow executed on 16,559 book summaries and 4,846 financial sentences, including revised raw-text full-span NER.
+
+| Configuration | Rerun training-corpus fit score |
+| --- | ---: |
+| 5topics_2passes | 431.4384 |
+| 10topics_2passes | 548.1752 |
+| 10topics_3passes | 539.8176 |
+| 10topics_5passes | 532.5633 |
+
+Scores retain the source's `2 ** (-log_perplexity)` calculation and are not held-out evaluation. Aggregate raw-span counts are recorded without redistributing source sentences, names or entity examples. No topic-quality, NER-accuracy or business-outcome benchmark was added.
+
+[Aggregate validation record](reports/validation_results.json). [Repeatable validation script](validation/rerun_analysis.py). Run `python validation/rerun_analysis.py` from the project root. Install `requirements-validation.txt` first; source CSVs stay local.
+
 ## Business Problem
 Explore themes in a book collection and extract structured information from financial text, while checking whether model outputs are interpretable and useful.
 
@@ -13,7 +28,7 @@ Explore themes in a book collection and extract structured information from fina
 - Demonstrate dependency parsing and financial NER across 4,846 news sentences.
 - Distinguish baseline token counts from an optional raw-text, full-span extraction workflow.
 
-## Key Findings
+## Historical findings and original context
 | Topics | Passes | Original corpus-fit score |
 |---|---:|---:|
 | 5 | 2 | 431.44 |
@@ -23,7 +38,7 @@ Explore themes in a book collection and extract structured information from fina
 
 These are the supplied `2 ** (-log_perplexity)` values on the training corpus, not held-out performance. Five broad themes support overview browsing, while ten topics expose finer distinctions. Lower scores alone do not establish the best topic model.
 
-Baseline NER produced suspicious tags, including `mn` as GPE and currency tokens as ORG. Destructive preprocessing and counting tokens rather than full entity spans limit interpretation. The revised full-span example is unexecuted.
+Baseline NER produced suspicious tags, including `mn` as GPE and currency tokens as ORG. Destructive preprocessing and counting tokens rather than full entity spans limit interpretation. The revised full-span example was executed; no labeled NER-accuracy assessment was performed.
 
 ## Run
 ```bash
@@ -34,7 +49,7 @@ jupyter lab notebooks/book_topics_and_financial_ner.ipynb
 Place permitted local CSV copies in `data/`; see `data/README.md`. NLTK downloads its tagger and WordNet at runtime. Preprocessing and LDA training can take several minutes.
 
 ## Files
-- `notebooks/book_topics_and_financial_ner.ipynb`: cleaned workflow and selected original outputs.
+- `notebooks/book_topics_and_financial_ner.ipynb`: workflow and saved validation outputs (source-text displays omitted).
 - `reports/book_topics_and_financial_ner.html`: readable analysis report.
 - `reports/lda_corpus_fit.csv`: original LDA scores.
 - `data/README.md`: local data requirements and attribution.
@@ -42,7 +57,7 @@ Place permitted local CSV copies in `data/`; see `data/README.md`. NLTK download
 - `portfolio_card.html`: matching project card.
 
 ## Validation and Limitations
-Code syntax checked; not rerun. Original numerical outputs are preserved; revised parsing and span-level NER do not have new results. No held-out topic evaluation, genre accuracy, NER accuracy or production improvement was measured. Dependencies are unpinned. Raw datasets, personal examples and local machine paths are omitted from the public package.
+The revised workflow was executed during validation. Original numerical context is preserved separately; fresh parsing and aggregate full-span NER outputs are now recorded. No held-out topic evaluation, genre accuracy, NER accuracy or production improvement was measured. Tested numerical/NLP packages are recorded in requirements-validation.txt. Raw datasets, personal examples and local machine paths are omitted from the public package.
 
 ## Sources
 CMU Book Summary Dataset: https://www.cs.cmu.edu/~dbamman/booksummaries.html . Financial PhraseBank source: Malo et al. (2014), *Good debt or bad debt: Detecting semantic orientations in economic texts*, https://doi.org/10.1002/asi.23062 . Retain attribution and observe applicable terms.

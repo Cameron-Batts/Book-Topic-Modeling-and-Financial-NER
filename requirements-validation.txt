@@ -1,0 +1,9 @@
+numpy==2.3.5
+pandas==2.2.3
+gensim==4.4.0
+nltk==3.10.4
+spacy==3.8.16
+en-core-web-md==3.8.0
+scipy==1.17.0
+ipython==9.17.1
+matplotlib==3.10.8

@@ -1,0 +1,45 @@
+{
+  "book_summaries": 16559,
+  "dictionary_size": 71568,
+  "financial_sentences": 4846,
+  "training_corpus_fit": {
+    "5topics_2passes": 431.43838933585033,
+    "10topics_2passes": 548.1752365075802,
+    "10topics_3passes": 539.8175648076375,
+    "10topics_5passes": 532.5633243637083
+  },
+  "raw_span_counts": {
+    "MONEY": {
+      "unique_spans": 665,
+      "total_mentions": 705
+    },
+    "GPE": {
+      "unique_spans": 520,
+      "total_mentions": 1791
+    },
+    "ORG": {
+      "unique_spans": 2308,
+      "total_mentions": 3985
+    }
+  },
+  "checked_at_utc": "2026-10-22T22:08:50.600223+00:00",
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "gensim": "4.4.0",
+    "nltk": "3.10.4",
+    "spacy": "3.8.16",
+    "en-core-web-md": "3.8.0",
+    "scipy": "1.17.0",
+    "ipython": "9.17.1"
+  },
+  "executed_code_cells": 20,
+  "generated_figures": 0,
+  "elapsed_seconds": 365.793838262558,
+  "input_sha256": {
+    "data/book.csv": "aed4822e7ca0d9a2b6d47956c6a57ef5b3b074a8666204e789e2fd99d8536fb7",
+    "data/all-data.csv": "cadf7575d2cee573f77d7293337d0bc989c67ab976753f70322d0fae5e8b507d"
+  },
+  "scope": "Full notebook rerun, including four LDA models and both processed-token and raw-span NER. Source text, topic names and entity examples omitted; no held-out topic/NER accuracy measured."
+}
